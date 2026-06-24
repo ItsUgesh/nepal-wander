@@ -1,0 +1,272 @@
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/nepal_hero_mountain.png');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8,21,32,0.95) 0%,
+    rgba(8,21,32,0.55) 40%,
+    rgba(8,21,32,0.15) 70%,
+    transparent 100%
+  );
+}
+.heroOverlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8,21,32,0.6) 0%,
+    transparent 50%,
+    rgba(8,21,32,0.2) 100%
+  );
+}
+
+/* ── MIST ── */
+.mistLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.wisp {
+  position: absolute;
+  opacity: 0;
+  animation: wispDrift linear infinite;
+}
+.wisp svg { display: block; }
+
+@keyframes wispDrift {
+  0%   { transform: translateX(110vw);  opacity: 0; }
+  12%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateX(-110vw); opacity: 0; }
+}
+
+.w1 { top: 44%; width: 780px; height: 110px; animation-duration: 35s; animation-delay:   0s; }
+.w2 { top: 36%; width: 600px; height:  80px; animation-duration: 48s; animation-delay: -14s; }
+.w3 { top: 52%; width: 700px; height: 120px; animation-duration: 42s; animation-delay:  -8s; }
+.w4 { top: 30%; width: 500px; height:  70px; animation-duration: 58s; animation-delay: -28s; }
+.w5 { top: 48%; width: 650px; height: 100px; animation-duration: 38s; animation-delay: -20s; }
+.w6 { top: 39%; width: 560px; height:  85px; animation-duration: 52s; animation-delay:  -5s; }
+.w7 { top: 55%; width: 820px; height: 130px; animation-duration: 62s; animation-delay: -38s; }
+.w8 { top: 33%; width: 480px; height:  65px; animation-duration: 44s; animation-delay: -24s; }
+
+/* ── SUN SHADOW ── */
+.sunShadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 55% 35% at 68% 18%,
+    rgba(255,210,100,0.09) 0%,
+    rgba(255,180,60,0.04) 50%,
+    transparent 100%
+  );
+  animation: sunPulse 14s ease-in-out infinite;
+}
+@keyframes sunPulse {
+  0%, 100% { opacity: 0.5;  transform: translateX(0)   scale(1);    }
+  35%       { opacity: 1.0;  transform: translateX(-4%) scale(1.08); }
+  65%       { opacity: 0.25; transform: translateX(6%)  scale(0.94); }
+}
+
+/* ── PARTICLES ── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #6cb8e8;
+  opacity: 0;
+  animation: particleFloat linear infinite;
+}
+@keyframes particleFloat {
+  0%   { transform: translateY(100vh) translateX(0);   opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
+}
+
+/* ── HERO CONTENT ── */
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 0 5rem 7rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(108,184,232,0.12);
+  border: 1px solid rgba(108,184,232,0.3);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6cb8e8;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.heroTitle {
+  font-family: var(--font-playfair);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #e8f0f8;
+  margin-bottom: 1.5rem;
+}
+.highlight {
+  color: transparent;
+  background: linear-gradient(135deg, #6cb8e8, #d4a843);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-style: italic;
+}
+
+.heroSub {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btnPrimary {
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #2178b4, #0e7a6e);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-size: 0.925rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.02em;
+}
+.btnPrimary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(33,120,180,0.45);
+}
+.btnOutline {
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: #e8f0f8;
+  border: 1.5px solid rgba(232,244,248,0.3);
+  border-radius: 100px;
+  font-size: 0.925rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(8px);
+}
+.btnOutline:hover {
+  background: rgba(232,244,248,0.08);
+  border-color: #6cb8e8;
+  color: #6cb8e8;
+}
+
+/* ── STATS BAR ── */
+.heroStats {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+.statItem {
+  flex: 1;
+  max-width: 220px;
+  padding: 1.2rem 1.5rem;
+  background: rgba(8,21,32,0.7);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(108,184,232,0.12);
+  border-right: 1px solid rgba(108,184,232,0.08);
+  text-align: center;
+}
+.statItem:last-child { border-right: none; }
+.statNum {
+  font-family: var(--font-playfair);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #6cb8e8;
+  line-height: 1;
+}
+.statLabel {
+  font-size: 0.7rem;
+  color: var(--text-dimmer);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+/* ── SCROLL HINT ── */
+.scrollHint {
+  position: absolute;
+  bottom: 80px;
+  right: 5rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-dimmer);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+}
+.scrollLine {
+  width: 1.5px;
+  height: 60px;
+  background: linear-gradient(to bottom, #2178b4, transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1);   }
+  50%       { opacity: 1;   transform: scaleY(1.2); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .heroContent { padding: 0 2rem 6rem; }
+  .scrollHint  { display: none; }
+}
