@@ -50,27 +50,12 @@ export default function Hero() {
           Where Earth<br />Touches <span className={styles.highlight}>Heaven</span>
         </h1>
         <p className={styles.heroSub}>
-          Nepal's breathtaking peaks, ancient temples, and timeless trails await. Your Himalayan story begins here — with guides who know every pass by heart.
+          Nepal's breathtaking peaks, ancient temples, and timeless trails await. Your Himalayan story begins here with guides who know every pass by heart.
         </p>
         <div className={styles.heroActions}>
           <button className={styles.btnPrimary}>Explore Destinations →</button>
           <button className={styles.btnOutline}>View Trekking Routes</button>
         </div>
-      </div>
-
-      {/* Stats bar */}
-      <div className={styles.heroStats}>
-        {[
-          { num: '8,849m', label: 'Highest Peak' },
-          { num: '50+',    label: 'Trek Routes' },
-          { num: '3,000+', label: 'Happy Trekkers' },
-          { num: '12',     label: 'UNESCO Sites' },
-        ].map((s) => (
-          <div key={s.label} className={styles.statItem}>
-            <div className={styles.statNum}>{s.num}</div>
-            <div className={styles.statLabel}>{s.label}</div>
-          </div>
-        ))}
       </div>
 
       {/* Scroll hint */}

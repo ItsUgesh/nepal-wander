@@ -1,0 +1,139 @@
+.destinations {
+  background: var(--navy);
+  padding: 6rem 4rem;
+}
+
+.destHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.sectionEyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.sectionEyebrow::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1.5px;
+  background: var(--teal);
+}
+
+.sectionTitle {
+  font-family: var(--font-playfair);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.viewAll {
+  color: var(--teal-light);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s;
+}
+.viewAll:hover { gap: 0.7rem; }
+
+/* ── GRID ── */
+.destinationsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.2rem;
+}
+
+.destCard {
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.destCardInner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+.destCard.big .destCardInner  { height: 480px; }
+.destCard.small .destCardInner { height: 220px; }
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.destCard:hover .cardImg { transform: scale(1.07); }
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,21,32,0.92) 0%, rgba(8,21,32,0.2) 55%, transparent 100%);
+  transition: opacity 0.3s;
+}
+.destCard:hover .cardOverlay { opacity: 0.85; }
+
+.cardContent {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+}
+.cardRegion {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 0.4rem;
+}
+.cardName {
+  font-family: var(--font-playfair);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.destCard.big .cardName { font-size: 1.9rem; }
+
+.cardMeta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s 0.05s, transform 0.4s 0.05s;
+}
+.destCard:hover .cardMeta { opacity: 1; transform: translateY(0); }
+
+.cardTag {
+  padding: 0.25rem 0.7rem;
+  background: rgba(108,184,232,0.15);
+  border: 1px solid rgba(108,184,232,0.3);
+  border-radius: 100px;
+  font-size: 0.68rem;
+  color: var(--teal-light);
+  letter-spacing: 0.05em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .destinations { padding: 4rem 2rem; }
+  .destinationsGrid { grid-template-columns: 1fr; }
+  .destCard.big .destCardInner  { height: 320px; }
+  .destCard.small .destCardInner { height: 200px; }
+  .destHeader { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
