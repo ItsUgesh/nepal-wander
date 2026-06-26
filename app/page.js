@@ -3,6 +3,7 @@ import StatsBar from '@/components/StatsBar';
 import Destinations from '@/components/Destinations';
 import Trekking from '@/components/Trekking';
 import Articles from '@/components/Articles';
+import Newsletter from '@/components/Newsletter';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Destinations />
       <Trekking />
       <Articles />
+      <Newsletter />
     </main>
   );
 }

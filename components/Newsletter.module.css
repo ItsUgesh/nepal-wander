@@ -1,0 +1,66 @@
+.newsletter {
+  background: linear-gradient(135deg, var(--teal) 0%, #0a5a50 100%);
+  text-align: center;
+  padding: 5rem 4rem;
+}
+
+.newsletter h2 {
+  font-family: var(--font-playfair);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.8rem;
+}
+
+.newsletter p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 0.8rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.newsletterForm input {
+  flex: 1;
+  padding: 0.875rem 1.2rem;
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 100px;
+  color: #fff;
+  font-family: var(--font-inter);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.newsletterForm input::placeholder { color: rgba(255,255,255,0.55); }
+.newsletterForm input:focus { border-color: rgba(255,255,255,0.6); }
+
+.newsletterForm button {
+  padding: 0.875rem 1.6rem;
+  background: #fff;
+  color: var(--teal);
+  border: none;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.newsletterForm button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 900px) {
+  .newsletter { padding: 3rem 2rem; }
+  .newsletterForm { flex-direction: column; }
+}
