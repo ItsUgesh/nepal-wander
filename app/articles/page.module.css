@@ -1,0 +1,148 @@
+.main {
+  min-height: 100vh;
+  background: var(--navy-deep);
+  padding: 8rem 4rem 6rem;
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1.5px;
+  background: var(--teal);
+}
+
+.title {
+  font-family: var(--font-playfair);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  text-decoration: none;
+  background: var(--slate);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(108,184,232,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.cardThumb {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.card:hover .cardImg { transform: scale(1.05); }
+
+.cardImgPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: var(--slate-mid);
+}
+
+.cardCategory {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.7rem;
+  background: rgba(8,21,32,0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 100px;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  border: 1px solid rgba(108,184,232,0.2);
+}
+
+.cardBody { padding: 1.4rem; }
+
+.cardTitle {
+  font-family: var(--font-playfair);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+  color: var(--white);
+}
+
+.cardExcerpt {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.7rem;
+  color: var(--text-dimmer);
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-dimmer);
+}
+
+@media (max-width: 900px) {
+  .main { padding: 6rem 2rem 4rem; }
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+}
