@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import styles from './Hero.module.css';
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
   const particlesRef = useRef(null);
@@ -19,6 +20,8 @@ export default function Hero() {
     }
   }, []);
 
+  const router = useRouter();
+
   return (
     <section className={styles.hero}>
 
@@ -30,7 +33,7 @@ export default function Hero() {
 
       {/* Mist wisps */}
       <div className={styles.mistLayer}>
-        {[1,2,3,4,5,6,7,8].map((n) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
           <div key={n} className={`${styles.wisp} ${styles[`w${n}`]}`}>
             <WispSvg n={n} />
           </div>
@@ -53,8 +56,8 @@ export default function Hero() {
           Nepal's breathtaking peaks, ancient temples, and timeless trails await. Your Himalayan story begins here with guides who know every pass by heart.
         </p>
         <div className={styles.heroActions}>
-          <button className={styles.btnPrimary}>Explore Destinations →</button>
-          <button className={styles.btnOutline}>View Trekking Routes</button>
+          <button className={styles.btnPrimary} onClick={() => router.push('/destinations')}>Explore Destinations →</button>
+          <button className={styles.btnOutline} onClick={() => router.push('/trekking')}>View Trekking Routes</button>
         </div>
       </div>
 
@@ -71,13 +74,13 @@ export default function Hero() {
 // Wisp SVG data — each wisp has unique size and opacity
 const wispData = [
   { w: 780, h: 110, rx: 370, ry: 44, op1: 0.58, op2: 0.28, op3: 0.15, blur: '22 12' },
-  { w: 600, h:  80, rx: 285, ry: 32, op1: 0.52, op2: 0.22, op3: 0.10, blur: '18 9'  },
+  { w: 600, h: 80, rx: 285, ry: 32, op1: 0.52, op2: 0.22, op3: 0.10, blur: '18 9' },
   { w: 700, h: 120, rx: 335, ry: 48, op1: 0.60, op2: 0.30, op3: 0.18, blur: '24 13' },
-  { w: 500, h:  70, rx: 238, ry: 28, op1: 0.48, op2: 0.18, op3: 0.08, blur: '15 8'  },
+  { w: 500, h: 70, rx: 238, ry: 28, op1: 0.48, op2: 0.18, op3: 0.08, blur: '15 8' },
   { w: 650, h: 100, rx: 310, ry: 40, op1: 0.30, op2: 0.25, op3: 0.12, blur: '20 10' },
-  { w: 560, h:  85, rx: 265, ry: 34, op1: 0.28, op2: 0.20, op3: 0.10, blur: '17 9'  },
+  { w: 560, h: 85, rx: 265, ry: 34, op1: 0.28, op2: 0.20, op3: 0.10, blur: '17 9' },
   { w: 820, h: 130, rx: 395, ry: 52, op1: 0.25, op2: 0.18, op3: 0.10, blur: '26 14' },
-  { w: 480, h:  65, rx: 228, ry: 26, op1: 0.28, op2: 0.20, op3: 0.09, blur: '14 7'  },
+  { w: 480, h: 65, rx: 228, ry: 26, op1: 0.28, op2: 0.20, op3: 0.09, blur: '14 7' },
 ];
 
 function WispSvg({ n }) {
@@ -91,9 +94,9 @@ function WispSvg({ n }) {
       xmlns="http://www.w3.org/2000/svg" overflow="visible">
       <defs>
         <radialGradient id={id} cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stopColor="white" stopOpacity={d.op1} />
-          <stop offset="50%"  stopColor="white" stopOpacity={d.op2} />
-          <stop offset="80%"  stopColor="white" stopOpacity={d.op3} />
+          <stop offset="0%" stopColor="white" stopOpacity={d.op1} />
+          <stop offset="50%" stopColor="white" stopOpacity={d.op2} />
+          <stop offset="80%" stopColor="white" stopOpacity={d.op3} />
           <stop offset="100%" stopColor="white" stopOpacity={0} />
         </radialGradient>
         <filter id={fid} x="-30%" y="-60%" width="160%" height="220%">
