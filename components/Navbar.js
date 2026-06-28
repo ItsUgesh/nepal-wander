@@ -23,7 +23,7 @@ export default function Navbar() {
         <li><Link href="/destinations">Destinations</Link></li>
         <li><Link href="/trekking">Trekking</Link></li>
         <li><Link href="/articles">Articles</Link></li>
-        <li><Link href="/#about">About</Link></li>
+        <li><Link href="/about">About</Link></li>
       </ul>
 
       <button className={styles.navCta}>Plan My Trip</button>
