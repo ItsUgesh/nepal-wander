@@ -54,7 +54,7 @@
   font-family: var(--font-playfair);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff; /* Locked to white for readability over dark hero image */
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
 }

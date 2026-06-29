@@ -98,13 +98,13 @@
   font-family: var(--font-playfair);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff; /* Locked to white for card text readability */
   margin-bottom: 0.5rem;
 }
 
 .cardDesc {
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: rgba(255, 255, 255, 0.75); /* Locked to light gray for card text readability */
   line-height: 1.5;
   margin-bottom: 0.75rem;
   display: -webkit-box;
