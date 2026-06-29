@@ -1,24 +1,22 @@
 .statsBar {
   display: flex;
   justify-content: center;
+  margin: -43px auto -43px; /* 50/50 overlap & pulls Destinations up so it touches Hero bottom exactly */
   position: relative;
-  top: 35px;
   z-index: 10;
   max-width: 900px;
   width: 90%;
-  margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  border: 1px solid var(--card-border); /* Soft, dynamic border matching the active theme */
+  box-shadow: 0 15px 45px rgba(33, 120, 180, 0.12); /* Soft sky-blue tinted shadow */
 }
 
 .statItem {
   flex: 1;
   padding: 1.4rem 1.5rem;
-  background: rgba(13, 26, 46, 0.95);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(108,184,232,0.15);
-  border-right: 1px solid rgba(108,184,232,0.08);
+  background: var(--navy); /* Matches white card background */
+  border-right: 1px solid var(--slate-mid);
   text-align: center;
 }
 .statItem:last-child { border-right: none; }
@@ -27,7 +25,7 @@
   font-family: var(--font-playfair);
   font-size: 1.6rem;
   font-weight: 700;
-  color: #6cb8e8;
+  color: var(--teal); /* Uses original signature sky blue */
   line-height: 1;
 }
 
@@ -42,7 +40,7 @@
 @media (max-width: 900px) {
   .statsBar {
     width: 95%;
-    margin: -30px auto 0;
+    margin: -30px auto -30px; /* Pulls up Destinations on mobile to close the gap */
     border-radius: 12px;
   }
   .statItem { padding: 1rem 0.5rem; }
@@ -54,7 +52,7 @@
   .statsBar { flex-wrap: wrap; }
   .statItem {
     flex: 1 1 50%;
-    border-right: 1px solid rgba(108,184,232,0.08);
-    border-bottom: 1px solid rgba(108,184,232,0.08);
+    border-right: 1px solid var(--slate-mid);
+    border-bottom: 1px solid var(--slate-mid);
   }
 }

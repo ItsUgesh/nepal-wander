@@ -1,17 +1,17 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:        #ffffff; /* Cards / blocks / scrolled navbar */
-  --navy-deep:   #f4f6f8; /* Page background (soft cool off-white) */
-  --teal:        #2178b4; /* The original sky blue accent */
-  --teal-light:  #6cb8e8; /* The original glacial ice blue */
+  --navy:        #ffffff; 
+  --navy-deep:   #f4f6f8; 
+  --teal:        #2178b4; 
+  --teal-light:  #6cb8e8; 
   --teal-pale:   #d5e7f2;
-  --gold:        #d4a843; /* The original gold */
+  --gold:        #d4a843; 
   --gold-light:  #f0c86a;
-  --white:       #122030; /* Body text color (Dark charcoal slate) */
-  --slate:       #ffffff; /* Card backgrounds (pure white) */
-  --slate-mid:   #e6ecf0; /* Borders / input backgrounds (pale ice blue) */
-  --text-dim:    #475569; /* Medium slate gray body text */
+  --white:       #122030; 
+  --slate:       #ffffff; 
+  --slate-mid:   #e6ecf0; 
+  --text-dim:    #475569; 
   --text-dimmer: #64748b;
   --font-inter:     'Inter', sans-serif;
   --font-playfair:  'Playfair Display', serif;
