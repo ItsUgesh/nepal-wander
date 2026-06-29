@@ -1,7 +1,61 @@
 import Link from 'next/link';
 import styles from './Destinations.module.css';
 
-export default function Destinations() {
+export default function Destinations({ destinations = [] }) {
+  // Fallback mock data with optimized WebP images
+  const mockDestinations = [
+    {
+      id: 'mock-1',
+      title: 'Everest Region',
+      slug: 'everest-region',
+      destinationDetails: {
+        shortDescription: 'The roof of the world, home to Mount Everest and legendary Sherpa villages.',
+        bestSeason: 'Oct - Dec',
+        distanceFromKathmandu: '140km',
+        elevation: '5,364m',
+        heroImage: { node: { sourceUrl: '/images/destinations/nepal_trek_hero.webp' } }
+      }
+    },
+    {
+      id: 'mock-2',
+      title: 'Pokhara Valley',
+      slug: 'pokhara-valley',
+      destinationDetails: {
+        shortDescription: 'A peaceful lakeside sanctuary offering spectacular panoramas of the Annapurna range.',
+        bestSeason: 'Sep - May',
+        distanceFromKathmandu: '200km',
+        elevation: '822m',
+        heroImage: { node: { sourceUrl: '/images/destinations/nepal_pokhara_lake.webp' } }
+      }
+    },
+    {
+      id: 'mock-3',
+      title: 'Kathmandu Durbar',
+      slug: 'kathmandu-durbar',
+      destinationDetails: {
+        shortDescription: 'The ancient capital filled with historic palaces, courtyards, and Newari craftsmanship.',
+        bestSeason: 'Year-round',
+        distanceFromKathmandu: '0km',
+        elevation: '1,400m',
+        heroImage: { node: { sourceUrl: '/images/destinations/nepal_kathmandu_temple.webp' } }
+      }
+    },
+    {
+      id: 'mock-4',
+      title: 'Chitwan Jungle',
+      slug: 'chitwan-jungle',
+      destinationDetails: {
+        shortDescription: 'Subtropical lowlands rich in wildlife, featuring the rare one-horned rhinoceros.',
+        bestSeason: 'Oct - Mar',
+        distanceFromKathmandu: '150km',
+        elevation: '415m',
+        heroImage: { node: { sourceUrl: '/images/destinations/nepal_chitwan_jungle.webp' } }
+      }
+    }
+  ];
+
+  const items = destinations.length > 0 ? destinations.slice(0, 5) : mockDestinations;
+
   return (
     <section className={styles.destinations}>
       <div className={styles.destHeader}>
@@ -15,48 +69,39 @@ export default function Destinations() {
       </div>
 
       <div className={styles.destinationsGrid}>
-
-        {/* Big card */}
-        <div className={`${styles.destCard} ${styles.big}`} style={{ gridRow: 'span 2' }}>
-          <div className={styles.destCardInner}>
-            <img src="/images/nepal_hero_mountain.png" className={styles.cardImg} alt="Everest Base Camp" />
-            <div className={styles.cardOverlay}></div>
-            <div className={styles.cardContent}>
-              <div className={styles.cardRegion}>Khumbu Region</div>
-              <div className={styles.cardName}>Everest Base<br />Camp</div>
-              <div className={styles.cardMeta}>
-                <span className={styles.cardTag}>5,364m</span>
-                <span className={styles.cardTag}>14 Days</span>
-                <span className={styles.cardTag}>High Altitude</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Small cards */}
-        {[
-          { img: '/images/destinations/nepal_pokhara_lake.png',   region: 'Lake District',      name: 'Pokhara Valley',     tags: ['Scenic', 'Easy Hikes'] },
-          { img: '/images/destinations/nepal_trek_hero.png', region: 'Annapurna Region',   name: 'Annapurna Circuit',  tags: ['5,416m', '19 Days'] },
-          { img: '/images/destinations/nepal_kathmandu_temple.png', region: 'Bagmati Province',   name: 'Kathmandu Durbar',   tags: ['UNESCO', 'Cultural'] },
-          { img: '/images/destinations/nepal_pokhara_lake.png',  region: 'Bagmati Province',   name: 'Langtang Valley',    tags: ['Moderate', '10 Days'] },
-        ].map((card) => (
-          <div key={card.name} className={`${styles.destCard} ${styles.small}`}>
-            <div className={styles.destCardInner}>
-              <img src={card.img} className={styles.cardImg} alt={card.name} />
-              <div className={styles.cardOverlay}></div>
-              <div className={styles.cardContent}>
-                <div className={styles.cardRegion}>{card.region}</div>
-                <div className={styles.cardName}>{card.name}</div>
-                <div className={styles.cardMeta}>
-                  {card.tags.map((tag) => (
-                    <span key={tag} className={styles.cardTag}>{tag}</span>
-                  ))}
+        {items.map((dest, index) => {
+          const isBig = index === 0;
+          const details = dest.destinationDetails || {};
+          const imageSrc = details.heroImage?.node?.sourceUrl || '/images/nepal_hero_mountain.webp';
+          
+          return (
+            <Link
+              href={`/destinations/${dest.slug}`}
+              key={dest.id || dest.slug}
+              className={`${styles.destCard} ${isBig ? styles.big : styles.small}`}
+              style={isBig ? { gridRow: 'span 2' } : {}}
+            >
+              <div className={styles.destCardInner}>
+                <img src={imageSrc} className={styles.cardImg} alt={dest.title} />
+                <div className={styles.cardOverlay}></div>
+                <div className={styles.cardContent}>
+                  <div className={styles.cardRegion}>
+                    {details.elevation ? `${details.elevation} Elevation` : 'Nepal'}
+                  </div>
+                  <div className={styles.cardName}>{dest.title}</div>
+                  <div className={styles.cardMeta}>
+                    {details.bestSeason && (
+                      <span className={styles.cardTag}>{details.bestSeason}</span>
+                    )}
+                    {details.distanceFromKathmandu && (
+                      <span className={styles.cardTag}>{details.distanceFromKathmandu}</span>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
-
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

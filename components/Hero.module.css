@@ -11,7 +11,7 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background-image: url('/images/nepal_hero_mountain.png');
+  background-image: url('/images/nepal_hero_mountain.webp');
   background-size: cover;
   background-position: center 30%;
 }

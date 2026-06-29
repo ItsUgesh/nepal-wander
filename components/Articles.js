@@ -1,35 +1,50 @@
+import Link from 'next/link';
 import styles from './Articles.module.css';
 
-export default function Articles() {
-  const articles = [
+export default function Articles({ articles = [] }) {
+  const mockArticles = [
     {
-      img: '/images/destinations/nepal_trek_hero.png',
+      img: '/images/destinations/nepal_trek_hero.webp',
       category: 'Trekking Guide',
       title: 'Your Complete Guide to Everest Base Camp — Everything You Need to Know',
       excerpt: 'Permits, packing lists, altitude sickness, best seasons — we cover it all so your trek goes exactly as planned.',
       readTime: '8 min read',
       tag: 'Trekking',
       date: 'June 2025',
+      slug: 'everest-base-camp-guide',
     },
     {
-      img: '/images/destinations/nepal_pokhara_lake.png',
+      img: '/images/destinations/nepal_pokhara_lake.webp',
       category: 'Destination',
       title: '48 Hours in Pokhara: The Perfect Weekend by Phewa Lake',
       excerpt: 'Boating at sunrise, paragliding over the valley, and the best daal bhat in town — a local\'s guide to Nepal\'s second city.',
       readTime: '5 min read',
       tag: 'City Guide',
       date: 'May 2025',
+      slug: '48-hours-in-pokhara',
     },
     {
-      img: '/images/destinations/nepal_kathmandu_temple.png',
+      img: '/images/destinations/nepal_kathmandu_temple.webp',
       category: 'Culture',
       title: 'Kathmandu\'s Hidden Temples: A Walking Route Through History',
       excerpt: 'Beyond the tourist trail — a 3-hour walk through courtyards, incense smoke, and centuries of Newari architecture.',
       readTime: '6 min read',
       tag: 'Culture',
       date: 'April 2025',
+      slug: 'kathmandus-hidden-temples',
     },
   ];
+
+  const items = articles.length > 0 ? articles.slice(0, 3).map(a => ({
+    img: a.travelArticleDetails.heroImage?.node?.sourceUrl || '/images/nepal_hero_mountain.webp',
+    category: a.travelArticleDetails.category || 'Travel Journal',
+    title: a.title,
+    excerpt: a.travelArticleDetails.excerpt || '',
+    readTime: a.travelArticleDetails.readTime || '5 min read',
+    tag: a.travelArticleDetails.category || 'Journal',
+    date: 'Latest',
+    slug: a.slug,
+  })) : mockArticles;
 
   return (
     <section className={styles.articles}>
@@ -40,8 +55,8 @@ export default function Articles() {
       </p>
 
       <div className={styles.articlesGrid}>
-        {articles.map((a) => (
-          <div key={a.title} className={styles.articleCard}>
+        {items.map((a) => (
+          <Link href={`/articles/${a.slug}`} key={a.title || a.slug} className={styles.articleCard} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className={styles.articleThumb}>
               <img src={a.img} alt={a.title} />
               <span className={styles.articleCategory}>{a.category}</span>
@@ -57,7 +72,7 @@ export default function Articles() {
                 <span>{a.date}</span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
