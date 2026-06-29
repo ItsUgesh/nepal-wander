@@ -28,7 +28,7 @@
   transition: color 0.3s;
 }
 .scrolled .logo {
-  color: var(--white); /* Becomes dark charcoal in light mode */
+  color: var(--text-dim); /* Matches the slate color of navbar links when scrolled */
 }
 .logo span { color: #6cb8e8; }
 

@@ -121,8 +121,8 @@
 
 .formGroup input,
 .formGroup textarea {
-  background: rgba(255,255,255,0.05);
-  border: 1.5px solid rgba(108,184,232,0.15);
+  background: var(--navy-deep); /* Light off-white inputs for light theme */
+  border: 1.5px solid var(--slate-mid);
   border-radius: 10px;
   padding: 0.875rem 1rem;
   color: var(--white);
@@ -135,18 +135,18 @@
 
 .formGroup input:focus,
 .formGroup textarea:focus {
-  border-color: rgba(108,184,232,0.45);
-  background: rgba(255,255,255,0.07);
+  border-color: var(--teal-light);
+  background: var(--navy); /* Transitions to pure white on focus */
 }
 
 .formGroup input::placeholder,
 .formGroup textarea::placeholder {
-  color: rgba(232,240,248,0.3);
+  color: var(--text-dimmer); /* Properly visible gray placeholder text */
 }
 
 .submitBtn {
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #2178b4, #0e7a6e);
+  background: linear-gradient(135deg, #2178b4, #104a75); /* Replaced green gradient */
   color: #fff;
   border: none;
   border-radius: 100px;
@@ -171,7 +171,7 @@
 .successIcon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #2178b4, #0e7a6e);
+  background: linear-gradient(135deg, #2178b4, #104a75); /* Replaced green gradient */
   border-radius: 50%;
   display: flex;
   align-items: center;
