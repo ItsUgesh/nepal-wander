@@ -104,7 +104,7 @@
   font-family: var(--font-playfair);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff; /* Keep card text white on top of photos */
   line-height: 1.2;
 }
 .destCard.big .cardName { font-size: 1.9rem; }

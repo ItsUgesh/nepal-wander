@@ -12,6 +12,7 @@
   border-radius: 24px;
   overflow: hidden;
 }
+
 .trekImageWrap img {
   width: 100%;
   height: 580px;
@@ -23,12 +24,13 @@
   position: absolute;
   bottom: 2rem;
   left: 2rem;
-  background: rgba(8,21,32,0.85);
+  background: rgba(8, 21, 32, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(108,184,232,0.2);
+  border: 1px solid rgba(108, 184, 232, 0.2);
   border-radius: 14px;
   padding: 1rem 1.5rem;
 }
+
 .altNum {
   font-family: var(--font-playfair);
   font-size: 2rem;
@@ -36,6 +38,7 @@
   color: var(--gold);
   line-height: 1;
 }
+
 .altLabel {
   font-size: 0.7rem;
   color: var(--text-dimmer);
@@ -52,6 +55,7 @@
   align-items: center;
   gap: 0.75rem;
 }
+
 .sectionEyebrow::before {
   content: '';
   display: block;
@@ -92,13 +96,16 @@
   padding: 1rem 1.2rem;
   background: var(--slate);
   border-radius: 12px;
-  border: 1px solid rgba(108,184,232,0.08);
+  border: 1px solid rgba(108, 184, 232, 0.08);
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  color: inherit;
+  text-decoration: none;
 }
+
 .routeItem:hover {
-  background: rgba(108,184,232,0.08);
-  border-color: rgba(108,184,232,0.2);
+  background: rgba(108, 184, 232, 0.08);
+  border-color: rgba(108, 184, 232, 0.2);
   transform: translateX(4px);
 }
 
@@ -125,15 +132,26 @@
   border-radius: 100px;
   font-weight: 500;
 }
-.diffHard { background: rgba(212,168,67,0.15); color: var(--gold); }
-.diffMod  { background: rgba(108,184,232,0.15); color: var(--teal-light); }
 
-.routeArrow { color: var(--text-dimmer); font-size: 0.8rem; }
+.diffHard {
+  background: rgba(212, 168, 67, 0.15);
+  color: var(--gold);
+}
+
+.diffMod {
+  background: rgba(108, 184, 232, 0.15);
+  color: var(--teal-light);
+}
+
+.routeArrow {
+  color: var(--text-dimmer);
+  font-size: 0.8rem;
+}
 
 .btnPrimary {
   margin-top: 2rem;
   padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, #2178b4, #0e7a6e);
+  background: linear-gradient(135deg, #2178b4, #104a75);
   color: #fff;
   border: none;
   border-radius: 100px;
@@ -143,9 +161,10 @@
   transition: transform 0.2s, box-shadow 0.2s;
   letter-spacing: 0.02em;
 }
+
 .btnPrimary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(33,120,180,0.45);
+  box-shadow: 0 12px 32px rgba(33, 120, 180, 0.45);
 }
 
 @media (max-width: 900px) {
@@ -154,5 +173,8 @@
     gap: 2rem;
     padding: 4rem 2rem;
   }
-  .trekImageWrap img { height: 320px; }
+
+  .trekImageWrap img {
+    height: 320px;
+  }
 }

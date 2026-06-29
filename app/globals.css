@@ -1,20 +1,25 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:        #0d1a2e;
-  --navy-deep:   #07111f;
-  --teal:        #2178b4;
-  --teal-light:  #6cb8e8;
-  --teal-pale:   #b4d9f5;
-  --gold:        #d4a843;
+  --navy:        #ffffff; /* Cards / blocks / scrolled navbar */
+  --navy-deep:   #f4f6f8; /* Page background (soft cool off-white) */
+  --teal:        #2178b4; /* The original sky blue accent */
+  --teal-light:  #6cb8e8; /* The original glacial ice blue */
+  --teal-pale:   #d5e7f2;
+  --gold:        #d4a843; /* The original gold */
   --gold-light:  #f0c86a;
-  --white:       #e8f0f8;
-  --slate:       #122030;
-  --slate-mid:   #1a3048;
-  --text-dim:    rgba(232,240,248,0.65);
-  --text-dimmer: rgba(232,240,248,0.4);
+  --white:       #122030; /* Body text color (Dark charcoal slate) */
+  --slate:       #ffffff; /* Card backgrounds (pure white) */
+  --slate-mid:   #e6ecf0; /* Borders / input backgrounds (pale ice blue) */
+  --text-dim:    #475569; /* Medium slate gray body text */
+  --text-dimmer: #64748b;
   --font-inter:     'Inter', sans-serif;
   --font-playfair:  'Playfair Display', serif;
+
+  /* Theme-specific layout variables */
+  --nav-bg:      rgba(255, 255, 255, 0.95);
+  --nav-border:  rgba(0, 0, 0, 0.08);
+  --card-border: rgba(0, 0, 0, 0.08);
 }
 
 html { scroll-behavior: smooth; }
