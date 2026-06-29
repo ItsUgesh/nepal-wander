@@ -2,6 +2,7 @@ import { getPlaceBySlug } from "@/lib/api";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Map from '@/components/Map';
 
 export default async function PlacePage({ params }) {
   const { destination, place } = await params;
@@ -57,6 +58,17 @@ export default async function PlacePage({ params }) {
             <div className={styles.section}>
               <h2 className={styles.sectionTitle}>Itinerary</h2>
               <p className={styles.sectionText}>{placeData.placeDetails.itinerary}</p>
+            </div>
+          )}
+
+          {placeData.placeDetails.mapLatitude && placeData.placeDetails.mapLongitude && (
+            <div className={styles.section}>
+              <h2 className={styles.sectionTitle}>Location</h2>
+              <Map
+                lat={parseFloat(placeData.placeDetails.mapLatitude)}
+                lng={parseFloat(placeData.placeDetails.mapLongitude)}
+                title={placeData.title}
+              />
             </div>
           )}
 
