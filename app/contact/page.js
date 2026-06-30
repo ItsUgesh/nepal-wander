@@ -10,16 +10,36 @@ export default function ContactPage() {
     subject: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For now just show success message
-    setSubmitted(true);
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send message.');
+      }
+
+      setStatus('success');
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err.message || 'Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -56,7 +76,7 @@ export default function ContactPage() {
 
         {/* Form */}
         <div className={styles.formWrap}>
-          {submitted ? (
+          {status === 'success' ? (
             <div className={styles.success}>
               <div className={styles.successIcon}>✓</div>
               <h2>Message Sent!</h2>
@@ -73,6 +93,7 @@ export default function ContactPage() {
                     placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
+                    disabled={status === 'loading'}
                     required
                   />
                 </div>
@@ -84,6 +105,7 @@ export default function ContactPage() {
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={handleChange}
+                    disabled={status === 'loading'}
                     required
                   />
                 </div>
@@ -97,6 +119,7 @@ export default function ContactPage() {
                   placeholder="What's this about?"
                   value={formData.subject}
                   onChange={handleChange}
+                  disabled={status === 'loading'}
                   required
                 />
               </div>
@@ -109,12 +132,19 @@ export default function ContactPage() {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
+                  disabled={status === 'loading'}
                   required
                 />
               </div>
 
-              <button type="submit" className={styles.submitBtn}>
-                Send Message →
+              {status === 'error' && (
+                <p style={{ color: '#fca5a5', fontSize: '0.9rem', fontWeight: '500', marginTop: '-0.5rem' }}>
+                  {errorMsg}
+                </p>
+              )}
+
+              <button type="submit" className={styles.submitBtn} disabled={status === 'loading'}>
+                {status === 'loading' ? 'Sending...' : 'Send Message →'}
               </button>
             </form>
           )}
