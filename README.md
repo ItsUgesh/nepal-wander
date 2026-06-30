@@ -1,160 +1,70 @@
-# NepalWander
+# NepalWander 🏔️
 
-A modern, full-stack Nepal travel guide and blog built with a headless WordPress CMS and Next.js frontend. Designed for tourists and travel agencies looking to explore Nepal's destinations, trekking routes, and travel stories.
+A modern, full-stack travel guide and blog for Nepal built with a **headless WordPress CMS** and **Next.js frontend**. 
 
-## 🌐 Live Demo
-[nepalwander.vercel.app](https://nepalwander.vercel.app) *(coming soon)*
+---
 
 ## 🛠️ Tech Stack
+*   **Frontend:** Next.js (App Router)
+*   **Styling:** Vanilla CSS Modules (Himalayan Light Theme)
+*   **Headless CMS:** WordPress (Hosted on Pantheon)
+*   **API:** WPGraphQL (GraphQL)
+*   **Integrations:** 
+    *   **Newsletter:** Mailchimp Marketing API (Double Opt-In)
+    *   **Contact Form:** Nodemailer (Gmail SMTP using Google App Passwords)
+    *   **Maps:** Leaflet & OpenStreetMap API
 
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js 14 (App Router) |
-| Styling | Vanilla CSS Modules |
-| CMS | WordPress (Headless) |
-| API | WPGraphQL (GraphQL) |
-| Custom Fields | ACF Free + WPGraphQL for ACF |
-| Custom Post Types | CPT UI |
-| Map | Leaflet + OpenStreetMap |
-| Deployment | Vercel (frontend), Shared Hosting (WordPress) |
-| Version Control | GitHub |
+---
 
-## ✨ Features
+## 📁 Key Directories
+*   `app/` — Next.js pages, layouts, and global styles
+*   `components/` — UI modules (Navbar, Footer, Hero, StatsBar, Leaflet Map)
+*   `lib/api.js` — GraphQL Client and content queries (dynamically reads `WORDPRESS_API_URL`)
+*   `app/api/` — Serverless API endpoints for newsletter (`/api/subscribe`) and contact form (`/api/contact`)
 
-- **Headless CMS** — WordPress manages all content, Next.js handles the frontend
-- **Dynamic routing** — destinations, places, trekking routes and articles all use Next.js dynamic routes
-- **GraphQL API** — efficient data fetching via WPGraphQL
-- **Interactive map** — Leaflet map on place detail pages using coordinates stored in WordPress
-- **Search** — site-wide search across destinations, trekking routes and articles
-- **Responsive design** — mobile-first with hamburger menu and adaptive layouts
-- **Animated hero** — SVG mist wisps, sun shadow pulse and floating particles
-- **Booking sidebar** — price, duration, group size and Book Now CTA on place and trekking pages
+---
 
-## 📁 Project Structure
-nepal-wander/
+## 🔑 Environment Variables
+Create a `.env.local` file in the root directory for local development:
 
-├── app/
+```env
+# Live WordPress GraphQL API Endpoint
+WORDPRESS_API_URL=https://dev-nepalwander.pantheonsite.io/graphql
 
-│   ├── page.js                          # Homepage
+# Mailchimp Credentials
+MAILCHIMP_API_KEY=your_mailchimp_api_key_usXX
+MAILCHIMP_AUDIENCE_ID=mailchimo_aud_id
 
-│   ├── layout.js                        # Root layout (Navbar + Footer)
+# Gmail SMTP Credentials (Gmail App Password)
+EMAIL_USER=your_email@gmail.com
+EMAIL_APP_PASSWORD=your_16_character_app_password
+```
 
-│   ├── globals.css                      # Global CSS variables
-
-│   ├── destinations/
-
-│   │   ├── page.js                      # All destinations
-
-│   │   └── [destination]/
-
-│   │       ├── page.js                  # Places within destination
-
-│   │       └── [place]/
-
-│   │           └── page.js              # Place detail + map + booking
-
-│   ├── trekking/
-
-│   │   ├── page.js                      # All trekking routes
-
-│   │   └── [slug]/
-
-│   │       └── page.js                  # Trekking route detail
-
-│   ├── articles/
-
-│   │   ├── page.js                      # All articles
-
-│   │   └── [slug]/
-
-│   │       └── page.js                  # Single article
-
-│   ├── about/page.js                    # About page
-
-│   ├── contact/page.js                  # Contact form
-
-│   └── search/page.js                   # Search results
-
-├── components/
-
-│   ├── Navbar.js                        # Fixed navbar with search + hamburger
-
-│   ├── Hero.js                          # Animated hero section
-
-│   ├── StatsBar.js                      # Stats bridge between hero and destinations
-
-│   ├── Destinations.js                  # Featured destinations grid
-
-│   ├── Trekking.js                      # Trekking routes section
-
-│   ├── Articles.js                      # Articles grid
-
-│   ├── Newsletter.js                    # Newsletter signup
-
-│   ├── Footer.js                        # Site footer
-
-│   └── Map.js                           # Leaflet map component
-
-└── lib/
-
-└── api.js                           # GraphQL client + all query functions
-
-## 🗄️ WordPress Setup
-
-**Plugins required:**
-- WPGraphQL
-- Custom Post Type UI (CPT UI)
-- Advanced Custom Fields (ACF Free)
-- WPGraphQL for ACF
-
-**Custom Post Types:**
-- `destinations` — travel destinations with hero image, description, season and elevation
-- `places` — places within destinations with gallery, price, itinerary and map coordinates
-- `trekking_routes` — trek routes with difficulty, elevation, itinerary and pricing
-- `travel_articles` — blog articles with category, excerpt and read time
+---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js v18+
-- XAMPP (local WordPress)
-- WordPress with WPGraphQL, CPT UI, ACF Free and WPGraphQL for ACF installed
-
-### Installation
-
+### 1. Local Setup
 ```bash
-# Clone the repo
+# Clone the repository
 git clone https://github.com/ItsUgesh/nepal-wander.git
 cd nepal-wander
 
 # Install dependencies
 npm install
 
-# Start the development server
+# Run the development server
 npm run dev
 ```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Make sure XAMPP is running with WordPress at `http://localhost/nepalwander` before starting the dev server.
+### 2. WordPress Configuration
+The site fetches schema structure dynamically from these WordPress core Custom Post Types:
+*   **Post Types:** `destinations`, `places`, `trekking_routes`, `travel_articles`.
+*   **Required Plugins:** *WPGraphQL, WPGraphQL for ACF, Custom Post Type UI, Advanced Custom Fields (ACF)*.
 
-### Environment
-The GraphQL endpoint is set in `lib/api.js`:
-```js
-const client = new GraphQLClient("http://localhost/nepalwander/graphql");
-```
-Update this to your live WordPress URL before deploying.
+---
 
-## 🎨 Design
-
-- **Color palette:** Himalayan Sky Blue (`#2178b4`), Glacial Ice (`#6cb8e8`), Gold (`#d4a843`)
-- **Fonts:** Playfair Display (headings), Inter (body)
-- **Theme:** Dark navy (`#07111f`) with frosted glass effects
-
-## 👨‍💻 Author
-
-**Ugesh Simkhada**
-- Portfolio: [ugeshsimkhada.com.np](https://ugeshsimkhada.com.np)
-- GitHub: [@ItsUgesh](https://github.com/ItsUgesh)
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+## ☁️ Production Architecture
+*   **Frontend Hosting:** Hosted on **Vercel** with automated continuous integration (CI/CD) on GitHub pushes.
+*   **Backend Hosting:** WordPress database and panel hosted on **Pantheon** (Developer Tier).
