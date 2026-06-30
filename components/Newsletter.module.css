@@ -64,3 +64,18 @@
   .newsletter { padding: 3rem 2rem; }
   .newsletterForm { flex-direction: column; }
 }
+
+.message {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.success {
+  color: #a7f3d0; /* Soft emerald green for success visibility */
+}
+
+.error {
+  color: #fca5a5; /* Soft red for error visibility */
+}
